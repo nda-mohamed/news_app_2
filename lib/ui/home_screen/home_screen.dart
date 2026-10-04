@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_2/core/app_color/app_color.dart';
-import 'package:news_app_2/core/helper/news_item.dart';
+import 'package:news_app_2/core/widgets/news_item.dart';
 import '../home_details_screen/home_details_screen.dart';
 import 'home_cubit.dart';
 import 'home_state.dart';
