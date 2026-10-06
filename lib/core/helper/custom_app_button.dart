@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app_color/app_color.dart';
 
 class CustomAppButton extends StatelessWidget {
   const CustomAppButton({super.key, required this.text, required this.onPressed});
@@ -11,7 +12,7 @@ class CustomAppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF3669C9),
+        backgroundColor: AppColor.primary_navy,
         foregroundColor: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 13),
         shape: RoundedRectangleBorder(
