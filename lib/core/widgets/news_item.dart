@@ -19,6 +19,9 @@ class NewsItem extends StatelessWidget {
               child: Image.network(
                 article.image ??
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBfA2wCTbjT-HA4iF3nNo-FsbgvjC0Gx_2SZuYC0y9nQ&s=10',
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.error, color: Colors.red);
+                },
               ),
             ),
           ),

@@ -8,7 +8,9 @@ final class HomeLoading extends HomeState {}
 
 final class HomeSuccess extends HomeState {
   final List<ArticleModel> data;
-  HomeSuccess(this.data);
+  final List<ArticleModel> savedArticles;
+
+  HomeSuccess(this.data, {this.savedArticles = const []});
 }
 
 final class HomeFailure extends HomeState {

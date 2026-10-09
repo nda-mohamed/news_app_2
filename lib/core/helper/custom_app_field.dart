@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import '../app_color/app_color.dart';
 
 class CustomAppField extends StatelessWidget {
-  CustomAppField({super.key, required this.hint, this.suffixIcon, this.validator});
+  CustomAppField({
+    super.key,
+    required this.hint,
+    this.suffixIcon,
+    this.validator,
+  });
 
   final String hint;
   final Widget? suffixIcon;

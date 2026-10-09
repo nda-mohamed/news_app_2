@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_2/ui/home_screen/home_navigator/home_navigator.dart';
 import '../../core/app_color/app_color.dart';
 import '../../core/helper/custom_app_button.dart';
 import '../../core/helper/custom_app_field.dart';
@@ -105,7 +106,7 @@ class SignupScreen extends StatelessWidget {
 
             CustomAppButton(text: 'Create Account', onPressed: () {
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => HomeNavBar()),
               );
             }),
 

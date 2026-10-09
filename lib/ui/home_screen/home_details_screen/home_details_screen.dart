@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_2/core/app_color/app_color.dart';
-import '../../models/article_model.dart';
+import 'package:news_app_2/core/widgets/circle_icon.dart';
+import '../../../models/article_model.dart';
+import '../home_cubit.dart';
+import '../home_state.dart';
 
 class HomeDetails extends StatelessWidget {
   const HomeDetails({super.key, required this.model});
@@ -10,49 +14,49 @@ class HomeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.white,
+      backgroundColor: Colors.grey.shade50,
 
       appBar: AppBar(
-        backgroundColor: AppColor.white,
-
-        leading: BackButton(
-          color: AppColor.primary_navy,
-        ),
-
+        backgroundColor: Colors.grey.shade50,
+        leading: BackButton(color: AppColor.primary_navy,),
         centerTitle: true,
         title: Text(
-          model.author ?? 'News Detail',
+          'News Details',
           style: TextStyle(
             color: AppColor.primary_navy,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
           ),
         ),
-
         actions: [
-          CircleAvatar(
-            backgroundColor: AppColor.primary_navy,
-            radius: 18,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.bookmark_border_rounded, color: AppColor.white),
-              iconSize: 20,
-            ),
+          BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              bool isSaved = context.read<HomeCubit>().isArticleSaved(model);
+              return CircleIcon(
+                icon: isSaved ? Icons.bookmark : Icons.bookmark_border_rounded,
+                onPressed: () {
+                  context.read<HomeCubit>().toggleSaveArticle(model);
+                },
+              );
+            },
           ),
-
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
         ],
       ),
 
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          spacing: 8,
+          spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(model.image ?? ''),
+              child: Image.network(model.image ?? '',
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.error, color: Colors.red);
+                },
+              ),
             ),
 
             Text(
